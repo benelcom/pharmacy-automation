@@ -1,0 +1,25 @@
+name: Generate Pharmacy Advice
+
+on:
+  schedule:
+    # Chaque lundi à 9h00 (heure UTC)
+    # UTC = GMT, donc 9h00 UTC = 10h00 au Maroc (heure d'hiver)
+    - cron: '0 9 * * 1'
+  
+  # Permet aussi de déclencher manuellement
+  workflow_dispatch:
+
+jobs:
+  generate-advice:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Call Generate Advice Endpoint
+        run: |
+          curl -X POST https://apothecabm.floot.app/_api/admin/generate-advice \
+               -H "Content-Type: application/json" \
+               -w "\nHTTP Status: %{http_code}\n" \
+               -v
+
+      - name: Show completion
+        run: echo "✅ Advice generation triggered successfully!"
