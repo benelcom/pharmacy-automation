@@ -4,7 +4,7 @@ on:
   schedule:
     # Chaque lundi à 9h00 (heure UTC)
     # UTC = GMT, donc 9h00 UTC = 10h00 au Maroc (heure d'hiver)
-    - cron: '0 9 * * 1'
+    - cron: '0 9 * * 1,4'
   
   # Permet aussi de déclencher manuellement
   workflow_dispatch:
