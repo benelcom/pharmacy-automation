@@ -23,7 +23,5 @@ jobs:
 
       - name: Show completion
         run: echo "✅ Advice generation triggered successfully!"
-         - name: Notify on failure
-        if: failure()
-        run: echo "❌ Failed to generate advice - check logs!"
+  
 
